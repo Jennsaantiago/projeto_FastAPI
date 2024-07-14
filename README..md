@@ -1,21 +1,10 @@
 # Desenvolvendo sua Primeira API com FastAPI
 
-Este repositório contém o código e os recursos necessários para desenvolver sua primeira API utilizando o FastAPI, um framework moderno e de alto desempenho para a criação de APIs com Python 3.7+.
-
-## Índice
-
-- [Descrição](#descrição)
-- [Requisitos](#requisitos)
-- [Instalação](#instalação)
-- [Como Executar](#como-executar)
-- [Rotas da API](#rotas-da-api)
-- [Estrutura do Projeto](#estrutura-do-projeto)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+Este repositório contém o código e os recursos necessários para desenvolver minha primeira API utilizando o FastAPI, um framework moderno e de alto desempenho para a criação de APIs com Python 3.14+.
 
 ## Descrição
 
-Este projeto serve como um guia introdutório para a criação de APIs com o FastAPI. Nele, você aprenderá a configurar seu ambiente, definir rotas, manipular dados e implementar funcionalidades básicas em uma API RESTful.
+Este projeto serve como um guia introdutório para a criação de APIs com o FastAPI, no tema de Crossfit. Nele, você aprenderá a configurar seu ambiente, definir rotas, manipular dados e implementar funcionalidades básicas em uma API RESTful.
 
 ## Requisitos
 
@@ -67,51 +56,50 @@ Este projeto serve como um guia introdutório para a criação de APIs com o Fas
     ``` 
     http://127.0.0.1:8000/redoc 
     ```
+    
+Para subir o banco de dados, caso não tenha o [docker-compose](https://docs.docker.com/compose/install/linux/) instalado, faça a instalação e logo em seguida, execute:
 
-## Rotas da API
-
-### `GET /`
-- Descrição: Retorna uma mensagem de boas-vindas.
-- Resposta:
-    ```json
-    {
-        "message": "Bem-vindo à sua primeira API com FastAPI!"
-    }
-    ```
-
-### `GET /items/{item_id}`
-- Descrição: Retorna os detalhes de um item específico.
-- Parâmetros:
-    - `item_id`: ID do item a ser retornado.
-- Resposta:
-    ```json
-    {
-        "item_id": 1,
-        "name": "Item exemplo",
-        "description": "Esta é a descrição do item exemplo."
-    }
-    ```
-
-## Estrutura do Projeto
-
+```bash
+make run-docker
 ```
-.
-├── app
-│   ├── __init__.py
-│   ├── main.py
-│   ├── routers
-│   │   └── items.py
-│   └── models.py
-├── venv
-├── requirements.txt
-└── README.md
+Para criar uma migration nova, execute:
+
+```bash
+make create-migrations d="nome_da_migration"
 ```
 
-- `app/`: Diretório principal do aplicativo.
-- `app/main.py`: Arquivo principal onde a aplicação FastAPI é instanciada.
-- `app/routers/`: Diretório para os arquivos de rotas.
-- `app/models.py`: Arquivo para definição dos modelos de dados.
-- `requirements.txt`: Arquivo que contém as dependências do projeto.
+Para criar o banco de dados, execute:
+
+```bash
+make run-migrations
+```
+
+## API
+
+Para subir a API, execute:
+```bash
+make run
+```
+e acesse: http://127.0.0.1:8000/docs
+
+
+## Desafio Final
+
+- adicionar query parameters nos endpoints
+    - atleta
+        - nome
+        - cpf
+- customizar response de retorno de endpoints
+    - get all
+        - atleta
+            - nome
+            - centro_treinamento
+            - categoria
+- Manipular exceção de integridade dos dados em cada módulo/tabela
+    - sqlalchemy.exc.IntegrityError e devolver a seguinte mensagem: “Já existe um atleta cadastrado com o cpf: x”
+    - status_code: 303
+- Adicionar paginação utilizando a lib: fastapi-pagination
+    - limit e offset
 
 ## Contribuição
 

@@ -15,8 +15,8 @@ Este projeto serve como um guia introdutório para a criação de APIs com o Fas
 
 1. Clone este repositório para sua máquina local:
     ```bash
-    git clone https://github.com/seu-usuario/seu-repositorio.git
-    cd seu-repositorio
+    git clone https://github.com/Jennsaantiago/projeto_FastAPI
+    cd projeto_FastAPI
     ```
 
 2. Crie um ambiente virtual:
